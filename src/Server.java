@@ -27,6 +27,7 @@ public class Server {
                 //Within the new thread, the "HandleClientSocket" method
                 //is there to call the connection of the "clientSocket"
                 //hhihihi
+                //hellloooo test
 
 
                 Thread thread = new Thread() {
