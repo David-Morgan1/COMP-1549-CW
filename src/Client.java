@@ -7,7 +7,6 @@ public class Client {
     public static void main(String[] args) {
         try {
             //code to connect the client's socket with the server socket
-            //comment for this to be pushed
             System.out.println("Client has joined");
             Socket clientSocket = new Socket("localhost", 7000);
 
