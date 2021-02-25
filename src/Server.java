@@ -26,16 +26,21 @@ public class Server {
                 IDout.println("Enter your ID: ");
 
                 BufferedReader ID = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                ID.readLine();
+                clientSocket.getInputStream();
+                String readID = ID.readLine();
 
-                System.out.println(ID);
-                IDArrayList.add(ID);
-                System.out.println(IDArrayList);
 
                 // code to check if the ID is in the array list
                 // if it is then the client has to enter another name
-                //...
-                // to be continued ;)
+                while (IDArrayList.contains(readID)) {
+                    IDout.println("ID has already been used. enter another one: ");
+                    clientSocket.getInputStream();
+                    readID = ID.readLine();
+                }
+
+                System.out.println(readID);
+                IDArrayList.add(readID);
+                System.out.println(IDArrayList);
 
                 //Print a line Statement which infers on which client just connected
                 System.out.println("Connection Established from " + clientSocket);
@@ -45,7 +50,6 @@ public class Server {
                 //a new thread is made.
                 //Within the new thread, the "HandleClientSocket" method
                 //is there to call the connection of the "clientSocket"
-
 
                 Thread thread = new Thread() {
                     @Override
@@ -60,17 +64,6 @@ public class Server {
                     }
                 };
                 thread.start();
-
-
-                //read the string which the client has sent
-                BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                // clientSocket.getInputStream() reads data from the sockets input stream
-                String str = in.readLine();
-
-
-                // send the same message back to the client
-                PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-                out.println("Server says: " + str);
 
 
             }
