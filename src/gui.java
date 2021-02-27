@@ -23,35 +23,35 @@ public class gui {
         heading.setLocation(600, 45);
         panel.add(heading);
 
-        JLabel enterID = new JLabel("Enter your Client ID:");
-        enterID.setBounds(140, 220, 400, 25);
+        JLabel enterID = new JLabel("Client ID:");
+        enterID.setBounds(1000, 180, 200, 25);
         enterID.setFont(heading.getFont().deriveFont(24.0f));
         panel.add(enterID);
 
         JTextField ID_Input = new JTextField();
-        ID_Input.setBounds(560, 220, 280, 25);
+        ID_Input.setBounds(1115, 180, 200, 25);
         panel.add(ID_Input);
 
-        JLabel enterPort = new JLabel("Enter your Port Number:");
-        enterPort.setBounds(140, 280, 400, 25);
+        JLabel enterPort = new JLabel("Port Number:");
+        enterPort.setBounds(600, 180, 200, 25);
         enterPort.setFont(heading.getFont().deriveFont(24.0f));
         panel.add(enterPort);
 
         JTextField Port_Input = new JTextField();
-        Port_Input.setBounds(560, 280, 280, 25);
+        Port_Input.setBounds(760, 180, 200, 25);
         panel.add(Port_Input);
 
-        JLabel enterIP = new JLabel("Enter your IP address:");
-        enterIP.setBounds(140, 340, 400, 25);
+        JLabel enterIP = new JLabel("IP address:");
+        enterIP.setBounds(230, 180, 200, 25);
         enterIP.setFont(heading.getFont().deriveFont(24.0f));
         panel.add(enterIP);
 
         JTextField IP_Input = new JTextField();
-        IP_Input.setBounds(560, 340, 280, 25);
+        IP_Input.setBounds(370, 180, 200, 25);
         panel.add(IP_Input);
 
         JButton registerBtn = new JButton("Register");
-        registerBtn.setBounds(710, 420, 110, 40);
+        registerBtn.setBounds(1350, 180, 110, 30);
         registerBtn.setFont(heading.getFont().deriveFont(14.0f));
         registerBtn.setBackground(Color.lightGray);
         panel.add(registerBtn);
