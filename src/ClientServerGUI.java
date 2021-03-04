@@ -54,20 +54,20 @@ public class ClientServerGUI extends JFrame {
 		panel.setBounds(10, 149, 827, 277);
 		contentPane.add(panel);
 		
-		JLabel lblNewLabel = new JLabel("IP Address");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setBounds(34, 112, 83, 25);
-		contentPane.add(lblNewLabel);
+		JLabel IPLabel = new JLabel("IP Address");
+		IPLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		IPLabel.setBounds(34, 118, 83, 25);
+		contentPane.add(IPLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Client ID");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1.setBounds(296, 118, 71, 13);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Port Number");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_2.setBounds(473, 118, 106, 13);
-		contentPane.add(lblNewLabel_2);
+		JLabel PortLabel = new JLabel("Port Number");
+		PortLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		PortLabel.setBounds(473, 118, 106, 13);
+		contentPane.add(PortLabel);
 		
 		textField = new JTextField();
 		textField.setBounds(10, 436, 709, 38);
@@ -75,26 +75,26 @@ public class ClientServerGUI extends JFrame {
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(116, 117, 157, 19);
+		textField_1.setBounds(116, 118, 157, 19);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JButton btnNewButton = new JButton("LOGIN");
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnLogin = new JButton("LOGIN");
+		btnLogin.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(693, 114, 106, 25);
-		contentPane.add(btnNewButton);
+		btnLogin.setBounds(693, 114, 106, 25);
+		contentPane.add(btnLogin);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(359, 117, 96, 19);
+		textField_2.setBounds(359, 118, 96, 19);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(565, 117, 96, 19);
+		textField_3.setBounds(565, 118, 96, 19);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
@@ -107,10 +107,10 @@ public class ClientServerGUI extends JFrame {
 		btnSend.setBounds(739, 436, 98, 38);
 		contentPane.add(btnSend);
 		
-		JLabel lblNewLabel_3 = new JLabel("Client Chat");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 36));
-		lblNewLabel_3.setBounds(227, 35, 367, 38);
-		contentPane.add(lblNewLabel_3);
+		JLabel TitleLabel = new JLabel("Client Chat");
+		TitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		TitleLabel.setFont(new Font("Tahoma", Font.PLAIN, 36));
+		TitleLabel.setBounds(227, 35, 367, 38);
+		contentPane.add(TitleLabel);
 	}
 }
