@@ -12,14 +12,16 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
 
-public class ClientServerGUI extends JFrame {
+public class GUI_Client extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField ClientMessageInput;
+	private JTextField IPInput;
+	private JTextField ClientInput;
+	private JTextField PortInput;
 
 	/**
 	 * Launch the application.
@@ -28,7 +30,7 @@ public class ClientServerGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ClientServerGUI frame = new ClientServerGUI();
+					GUI_Client frame = new GUI_Client();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,44 +42,44 @@ public class ClientServerGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ClientServerGUI() {
+	public GUI_Client() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 861, 521);
+		setBounds(100, 100, 690, 464);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.CYAN);
+		contentPane.setBackground(SystemColor.activeCaption);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.LIGHT_GRAY);
-		panel.setBounds(10, 149, 827, 277);
+		panel.setBackground(UIManager.getColor("Button.light"));
+		panel.setBounds(10, 103, 654, 277);
 		contentPane.add(panel);
 		
 		JLabel IPLabel = new JLabel("IP Address");
 		IPLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		IPLabel.setBounds(34, 118, 83, 25);
+		IPLabel.setBounds(34, 68, 83, 25);
 		contentPane.add(IPLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Client ID");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_1.setBounds(296, 118, 71, 13);
-		contentPane.add(lblNewLabel_1);
+		JLabel ClientLabel = new JLabel("Client ID");
+		ClientLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ClientLabel.setBounds(244, 75, 71, 13);
+		contentPane.add(ClientLabel);
 		
 		JLabel PortLabel = new JLabel("Port Number");
 		PortLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		PortLabel.setBounds(473, 118, 106, 13);
+		PortLabel.setBounds(393, 75, 106, 13);
 		contentPane.add(PortLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 436, 709, 38);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		ClientMessageInput = new JTextField();
+		ClientMessageInput.setBounds(10, 392, 543, 25);
+		contentPane.add(ClientMessageInput);
+		ClientMessageInput.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(116, 118, 157, 19);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		IPInput = new JTextField();
+		IPInput.setBounds(115, 73, 119, 19);
+		contentPane.add(IPInput);
+		IPInput.setColumns(10);
 		
 		JButton btnLogin = new JButton("LOGIN");
 		btnLogin.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -85,18 +87,18 @@ public class ClientServerGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnLogin.setBounds(693, 114, 106, 25);
+		btnLogin.setBounds(563, 68, 101, 25);
 		contentPane.add(btnLogin);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(359, 118, 96, 19);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		ClientInput = new JTextField();
+		ClientInput.setBounds(312, 72, 71, 19);
+		contentPane.add(ClientInput);
+		ClientInput.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(565, 118, 96, 19);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		PortInput = new JTextField();
+		PortInput.setBounds(486, 72, 65, 19);
+		contentPane.add(PortInput);
+		PortInput.setColumns(10);
 		
 		JButton btnSend = new JButton("SEND");
 		btnSend.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -104,13 +106,13 @@ public class ClientServerGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnSend.setBounds(739, 436, 98, 38);
+		btnSend.setBounds(566, 392, 98, 25);
 		contentPane.add(btnSend);
 		
 		JLabel TitleLabel = new JLabel("Client Chat");
 		TitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		TitleLabel.setFont(new Font("Tahoma", Font.PLAIN, 36));
-		TitleLabel.setBounds(227, 35, 367, 38);
+		TitleLabel.setBounds(175, 10, 281, 38);
 		contentPane.add(TitleLabel);
 	}
 }
