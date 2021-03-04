@@ -44,17 +44,17 @@ public class GUI_Client extends JFrame {
 	 */
 	public GUI_Client() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 690, 464);
+		setBounds(100, 100, 695, 466);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.activeCaption);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(UIManager.getColor("Button.light"));
-		panel.setBounds(10, 103, 654, 277);
-		contentPane.add(panel);
+		JPanel ChatPanel = new JPanel();
+		ChatPanel.setBackground(UIManager.getColor("Button.light"));
+		ChatPanel.setBounds(10, 103, 654, 277);
+		contentPane.add(ChatPanel);
 		
 		JLabel IPLabel = new JLabel("IP Address");
 		IPLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -100,14 +100,14 @@ public class GUI_Client extends JFrame {
 		contentPane.add(PortInput);
 		PortInput.setColumns(10);
 		
-		JButton btnSend = new JButton("SEND");
-		btnSend.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnSend.addActionListener(new ActionListener() {
+		JButton BtnSend = new JButton("SEND");
+		BtnSend.setFont(new Font("Tahoma", Font.BOLD, 18));
+		BtnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnSend.setBounds(566, 392, 98, 25);
-		contentPane.add(btnSend);
+		BtnSend.setBounds(566, 392, 98, 25);
+		contentPane.add(BtnSend);
 		
 		JLabel TitleLabel = new JLabel("Client Chat");
 		TitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
