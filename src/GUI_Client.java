@@ -24,7 +24,7 @@ public class GUI_Client extends JFrame {
 	private JTextField PortInput;
 
 	/**
-	 * Launch the application.
+	 * Launch the application
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
