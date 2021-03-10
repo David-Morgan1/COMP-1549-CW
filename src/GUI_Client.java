@@ -87,10 +87,11 @@ public class GUI_Client extends JFrame {
 			
 			// action listener for the Login Button
 			public void actionPerformed(ActionEvent e) {
-				String ipAddress = IPInput.getText();
-				String clientID = ClientIDInput.getText();
-				String portNumber = PortInput.getText();
-				
+				String IP = IPInput.getText();
+				String ID= ClientIDInput.getText();
+				String Port = PortInput.getText();
+
+				System.out.println(IP+ID+Port);
 				
 		
 				
