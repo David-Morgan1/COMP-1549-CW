@@ -20,7 +20,7 @@ public class GUI_Client extends JFrame {
 	private JPanel contentPane;
 	private JTextField ClientMessageInput;
 	private JTextField IPInput;
-	private JTextField ClientInput;
+	private JTextField ClientIDInput;
 	private JTextField PortInput;
 
 	/**
@@ -84,16 +84,25 @@ public class GUI_Client extends JFrame {
 		JButton btnLogin = new JButton("LOGIN");
 		btnLogin.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnLogin.addActionListener(new ActionListener() {
+			
+			// action listener for the Login Button
 			public void actionPerformed(ActionEvent e) {
+				String ipAddress = IPInput.getText();
+				String clientID = ClientIDInput.getText();
+				String portNumber = PortInput.getText();
+				
+				
+		
+				
 			}
 		});
 		btnLogin.setBounds(563, 68, 101, 25);
 		contentPane.add(btnLogin);
 		
-		ClientInput = new JTextField();
-		ClientInput.setBounds(312, 72, 71, 19);
-		contentPane.add(ClientInput);
-		ClientInput.setColumns(10);
+		ClientIDInput = new JTextField();
+		ClientIDInput.setBounds(312, 72, 71, 19);
+		contentPane.add(ClientIDInput);
+		ClientIDInput.setColumns(10);
 		
 		PortInput = new JTextField();
 		PortInput.setBounds(486, 72, 65, 19);
@@ -103,6 +112,8 @@ public class GUI_Client extends JFrame {
 		JButton BtnSend = new JButton("SEND");
 		BtnSend.setFont(new Font("Tahoma", Font.BOLD, 18));
 		BtnSend.addActionListener(new ActionListener() {
+			
+			// action listener for the Send Button
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
