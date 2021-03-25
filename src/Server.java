@@ -1,8 +1,6 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.*;
-import java.io.OutputStream;
 import java.util.ArrayList;
 
 
@@ -76,8 +74,17 @@ public class Server {
                 System.out.println("Connection Established from " + IDArrayList);
 
 
-                ServerThreads threads = new ServerThreads(clientSocket);
+                ServerThreads threads = new ServerThreads(clientSocket, IDArrayList, readID);
                 threads.start();
+
+                //WriteMessages writemsgs = new WriteMessages(clientSocket, readID, IDArrayList);
+                //writemsgs.start();
+
+                //ReadMessages readmsgs = new ReadMessages(clientSocket, readID);
+                //readmsgs.start();
+
+
+
 
             }
         }
