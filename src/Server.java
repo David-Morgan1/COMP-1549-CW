@@ -77,11 +77,11 @@ public class Server {
                 ServerThreads threads = new ServerThreads(clientSocket, IDArrayList, readID);
                 threads.start();
 
-                //WriteMessages writemsgs = new WriteMessages(clientSocket, readID, IDArrayList);
-                //writemsgs.start();
+                WriteMessages writemsgs = new WriteMessages(clientSocket, readID, IDArrayList);
+                writemsgs.start();
 
-                //ReadMessages readmsgs = new ReadMessages(clientSocket, readID);
-                //readmsgs.start();
+                ReadMessages readmsgs = new ReadMessages(clientSocket, readID);
+                readmsgs.start();
 
 
 

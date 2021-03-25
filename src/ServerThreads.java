@@ -52,18 +52,18 @@ public class ServerThreads extends Thread{
         //the text string that the client is sending.
 
         //THIS IS START OF HADIL'S CODE
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        String text;
-        while( (text = reader.readLine()) !=null) {
-            if ("quit".equalsIgnoreCase(text)) {
-                IDArrayList.remove(readID);
-                break;
-            }
-            String msg = "You typed: " + text + "\n";
-            outputStream.write(msg.getBytes());
-        }
+        //BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        //String text;
+        //while( (text = reader.readLine()) !=null) {
+            //if ("quit".equalsIgnoreCase(text)) {
+                //IDArrayList.remove(readID);
+                //break;
+            //}
+            //String msg = "You typed: " + text + "\n";
+            //outputStream.write(msg.getBytes());
+        //}
 
-        clientSocket.close();
+        //clientSocket.close();
 
         // this is the end of hadils code
 
