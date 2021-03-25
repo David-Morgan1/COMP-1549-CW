@@ -1,19 +1,13 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
 import java.awt.Color;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
 import java.awt.SystemColor;
-import javax.swing.UIManager;
 
 public class GUI_Client extends JFrame {
 
@@ -116,6 +110,9 @@ public class GUI_Client extends JFrame {
 
             // action listener for the Send Button
             public void actionPerformed(ActionEvent e) {
+                String message = ClientMessageInput.getText();
+                System.out.println(message);
+
             }
         });
         BtnSend.setBounds(566, 392, 98, 25);
@@ -126,5 +123,16 @@ public class GUI_Client extends JFrame {
         TitleLabel.setFont(new Font("Tahoma", Font.PLAIN, 36));
         TitleLabel.setBounds(175, 10, 281, 38);
         contentPane.add(TitleLabel);
+
+        JButton btnLogout = new JButton("TERMINATE");
+        btnLogout.addActionListener(new ActionListener() {
+            // Action listener for the Logout Button
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+        btnLogout.setFont(new Font("Tahoma", Font.BOLD, 12));
+        btnLogout.setBounds(563, 33, 118, 25);
+        contentPane.add(btnLogout);
     }
 }
