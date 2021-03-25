@@ -124,15 +124,15 @@ public class GUI_Client extends JFrame {
         TitleLabel.setBounds(175, 10, 281, 38);
         contentPane.add(TitleLabel);
 
-        JButton btnLogout = new JButton("TERMINATE");
-        btnLogout.addActionListener(new ActionListener() {
-            // Action listener for the Logout Button
+        JButton btnTerminate = new JButton("TERMINATE");
+        btnTerminate.setFont(new Font("Tahoma", Font.BOLD, 12));
+        btnTerminate.setBounds(563, 33, 118, 25);
+        contentPane.add(btnTerminate);
+        btnTerminate.addActionListener(new ActionListener() {
+            // Action listener for the Terminate Button
             public void actionPerformed(ActionEvent e) {
                 dispose();
             }
         });
-        btnLogout.setFont(new Font("Tahoma", Font.BOLD, 12));
-        btnLogout.setBounds(563, 33, 118, 25);
-        contentPane.add(btnLogout);
     }
 }
