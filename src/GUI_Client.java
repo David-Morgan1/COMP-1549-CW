@@ -45,10 +45,10 @@ public class GUI_Client extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JPanel ChatPanel = new JPanel();
-        ChatPanel.setBackground(UIManager.getColor("Button.light"));
-        ChatPanel.setBounds(10, 103, 654, 277);
-        contentPane.add(ChatPanel);
+        JTextArea messageArea = new JTextArea();
+        messageArea.setBackground(UIManager.getColor("Button.light"));
+        messageArea.setBounds(10, 103, 654, 277);
+        contentPane.add(messageArea);
 
         JLabel IPLabel = new JLabel("IP Address");
         IPLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -85,7 +85,6 @@ public class GUI_Client extends JFrame {
                 String ID= ClientIDInput.getText();
                 String Port = PortInput.getText();
 
-                System.out.println(IP+ID+Port);
 
 
 
@@ -111,7 +110,8 @@ public class GUI_Client extends JFrame {
             // action listener for the Send Button
             public void actionPerformed(ActionEvent e) {
                 String message = ClientMessageInput.getText();
-                System.out.println(message);
+                String ID = ClientIDInput.getText();
+                messageArea.append("\n" + ID + ":  " + message);
 
             }
         });
