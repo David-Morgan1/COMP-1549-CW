@@ -41,40 +41,25 @@ public class ServerThreads extends Thread{
             PrintWriter FirstCoordOut = new PrintWriter(new BufferedOutputStream(clientSocket.getOutputStream()), true);
             FirstCoordOut.println("The first Coordinator is:" + firstcoord);
 
-
-
-            while(!firstcoord.equals(IDArrayList.get(0))) {
-                coord = IDArrayList.get(0);
-                firstcoord = coord;
-                PrintWriter CoordOut = new PrintWriter(new BufferedOutputStream(clientSocket.getOutputStream()), true);
-                CoordOut.println("The New Coordinator is:" + firstcoord);
-            }
-
-            //End of coordinator code
-
-
             while(true) {
                 String outputString = input.readLine();
                 //if user types exit command
-                if (outputString.equals("exit")) {
+                if (outputString.equals("exit") && readID.equals(coord)) {
                     IDArrayList.remove(readID);
                     printToALlClients(readID + " has left ");
+                    printToALlClients("Please update your members list!");
                     Object newcoord = IDArrayList.get(0);
-                    if (readID.equals(coord)) {
-                        PrintWriter CoordOut = new PrintWriter(new BufferedOutputStream(clientSocket.getOutputStream()), true);
-                        printToALlClients("The New Coordinator is:" + newcoord);
-                        break;
+                    PrintWriter CoordOut = new PrintWriter(new BufferedOutputStream(clientSocket.getOutputStream()), true);
+                    printToALlClients("The New Coordinator is:" + newcoord);
+                    break;
+                } else if (outputString.equals("exit")){
+                    IDArrayList.remove(readID);
+                    printToALlClients(readID + " has left ");
+                    printToALlClients("Please update your members list!");
+                    break;
 
-                    }
-                    //PrintWriter CoordOut = new PrintWriter(new BufferedOutputStream(clientSocket.getOutputStream()), true);
-                    //printToALlClients("The New Coordinator is:" + newcoord);
-                    //break;
                 } else {
                     String message = ("(" + readID + ")" + " message : ");
-                    //System.out.println(message);
-                    //output.print(message);
-                    //clientSocket.getInputStream();
-
 
                 }
                 printToALlClients(outputString);
