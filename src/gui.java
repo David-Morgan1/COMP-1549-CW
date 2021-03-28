@@ -79,7 +79,7 @@ public class gui extends JFrame {
         btnLogin.setFont(new Font("Tahoma", Font.BOLD, 15));
         btnLogin.addActionListener(new ActionListener() {
 
-            // action listener for the Login Button
+            // Action listener for the Login Button
             public void actionPerformed(ActionEvent e) {
                 String IP = IPInput.getText();
                 String ID= ClientIDInput.getText();
@@ -107,7 +107,7 @@ public class gui extends JFrame {
         BtnSend.setFont(new Font("Tahoma", Font.BOLD, 18));
         BtnSend.addActionListener(new ActionListener() {
 
-            // action listener for the Send Button
+            // Action listener for the Send Button
             public void actionPerformed(ActionEvent e) {
                 String message = ClientMessageInput.getText();
                 String ID = ClientIDInput.getText();
@@ -129,6 +129,7 @@ public class gui extends JFrame {
         btnTerminate.setBounds(563, 33, 118, 25);
         contentPane.add(btnTerminate);
         btnTerminate.addActionListener(new ActionListener() {
+
             // Action listener for the Terminate Button
             public void actionPerformed(ActionEvent e) {
                 dispose();
