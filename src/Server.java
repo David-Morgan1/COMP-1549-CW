@@ -1,20 +1,25 @@
 import java.io.*;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
-import java.io.OutputStream;
 import java.util.ArrayList;
 
 
 public class Server {
     private static String StringUtils;
+    private Scanner scanner;
+    private StringBuilder buffer;
+    private boolean reading;
+    private Thread t;
 
     public static void main(String[] args) {
         //TODO auto generated method sub
         ArrayList<ServerThreads> threadList = new ArrayList<>();
         try {
             // code to connect the server socket with the client socket
-            ServerSocket serverSocket = new ServerSocket(7000);
+            InetAddress address = InetAddress.getByName("127.0.0.1");
+            ServerSocket serverSocket = new ServerSocket(7000, 100, address);
 
             //create an array list
             ArrayList IDArrayList = new ArrayList();
@@ -69,24 +74,17 @@ public class Server {
                 clientSocket.getInputStream();
                 //IP address IS STORED IN 'readIP' variable
                 String readIP = IPaddress.readLine();
+                while(!readIP.equals("127.0.0.1")){
+                    IPOut.println("Wrong IP address inputted. Try Again: ");
+                    clientSocket.getInputStream();
+                    readIP = IPaddress.readLine();
+                }
                 System.out.println(readIP);
 
 
                 //Print a line Statement which infers on which client just connected.
                 //This is displayed on the Server
                 System.out.println("Connection Established from " + IDArrayList);
-
-
-
-
-
-                //new code attempt for login online status
-                //String onlineStatus = "online users :" + IDArrayList + "\n";
-                //while (IDArrayList.contains(readID)) {
-                    //IDout.println(onlineStatus);
-                    //clientSocket.getInputStream();
-                    //readID = ID.readLine();
-                //}
 
 
 
@@ -102,6 +100,4 @@ public class Server {
         }
 
     }
-
-
 }
