@@ -27,7 +27,10 @@ public class Server {
             InetAddress address = InetAddress.getByName("127.0.0.1");
             ServerSocket serverSocket = new ServerSocket(7000, 100, address);
 
-            //create an array list
+            // Initialise an ArrayList to store all our Client ID's.
+            // The IDArrayList is used to ensure no duplicate ID's are made, this is to ensure the uniqueness of each
+            // Client connecting. The ArrayList is vital in choosing who the coordinator is and is used in our
+            // coordinator code.
             ArrayList IDArrayList = new ArrayList();
 
             while (true) {
