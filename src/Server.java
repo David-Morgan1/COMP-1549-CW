@@ -76,7 +76,8 @@ public class Server {
                 // for the correct Port number.
                 // If the wrong Port number is inputted by the Client, we inform them that they have inputted the wrong
                 // Port number and ask them to try again until it is correct.
-                while(!readPort.equals("7000")){
+                String PortNumber = "7000";
+                while(!readPort.equals(PortNumber)){
                     PortOut.println("Wrong Port Number inputted. Try Again: ");
                     clientSocket.getInputStream();
                     readPort = Port.readLine();

@@ -39,9 +39,9 @@ public class ServerThreads extends Thread{
             // and assigning them to be the coordinator.
             // Every time a new Client connects, they will be informed who the coordinator is.
             Object coord = IDArrayList.get(0);
-            Object firstcoord = coord;
+            //Object firstcoord = coord;
             PrintWriter FirstCoordOut = new PrintWriter(new BufferedOutputStream(clientSocket.getOutputStream()), true);
-            FirstCoordOut.println("The Coordinator is:" + firstcoord);
+            FirstCoordOut.println("The Coordinator is:" + coord);
 
             //if the client connects to the Server, then print to all connected users
             //that the newly conencted user is online
@@ -52,6 +52,7 @@ public class ServerThreads extends Thread{
 
 
             while(true) {
+                Object constantcoord = IDArrayList.get(0);
                 // The variable 'outputString' allows continuous reading of input from the Client so that we can assess
                 // their input into the chat client.
                 String outputString = input.readLine();
@@ -72,8 +73,9 @@ public class ServerThreads extends Thread{
                 // Client ArrayList, and inform all the active members that they have left and to update their list of
                 // active members.
                 if(outputString == null){
-                    if (readID.equals(coord)){
+                    if (readID.equals(constantcoord)){
                         IDArrayList.remove(readID);
+                        System.out.println(IDArrayList);
                         printToALlClients(readID + " has left ");
                         printToALlClients("Please update your members list!");
                         Object newcoord = IDArrayList.get(0);
@@ -83,6 +85,7 @@ public class ServerThreads extends Thread{
                     }
                   else {
                         IDArrayList.remove(readID);
+                        System.out.println(IDArrayList);
                         printToALlClients(readID + " has left ");
                         printToALlClients("Please update your members list!");
                         break;
@@ -98,8 +101,9 @@ public class ServerThreads extends Thread{
                 // Otherwise if the Client abnormally terminated and is not the coordinator, we remove them from our active
                 // Client ArrayList, and inform all the active members that they have left and to update their list of
                 // active members.
-                else if (outputString.equals("exit") && readID.equals(coord)) {
+                else if (outputString.equals("exit") && readID.equals(constantcoord)) {
                     IDArrayList.remove(readID);
+                    System.out.println(IDArrayList);
                     printToALlClients(readID + " has left ");
                     printToALlClients("Please update your members list!");
                     Object newcoord = IDArrayList.get(0);
@@ -108,6 +112,7 @@ public class ServerThreads extends Thread{
                     break;
                 } else if (outputString.equals("exit") ){
                     IDArrayList.remove(readID);
+                    System.out.println(IDArrayList);
                     printToALlClients(readID + " has left ");
                     printToALlClients("Please update your members list!");
                     break;
