@@ -19,7 +19,7 @@ public class ServerThreads extends Thread{
         this.clientSocket = clientSocket;
         this.threadList = thread;
         this.IDArrayList = IDArrayList;
-        this.readID =readID;
+        this.readID = readID;
     }
 
     @Override
@@ -33,17 +33,31 @@ public class ServerThreads extends Thread{
             //we have to do it manually
             output = new PrintWriter(clientSocket.getOutputStream(), true);
 
-            // Coordinator code
+            // This is the Coordinator code. The coordinator is assigned by taking the client at index 0 in our IDArrayList
+            // and assigning them to be the coordinator.
+            // Every time a new Client connects, they will be informed who the coordinator is.
             Object coord = IDArrayList.get(0);
             Object firstcoord = coord;
             PrintWriter FirstCoordOut = new PrintWriter(new BufferedOutputStream(clientSocket.getOutputStream()), true);
-            FirstCoordOut.println("The first Coordinator is:" + firstcoord);
+            FirstCoordOut.println("The Coordinator is:" + firstcoord);
 
 
 
             while(true) {
+                // The variable 'outputString' allows continuous reading of input from the Client so that we can assess
+                // their input into the chat client.
                 String outputString = input.readLine();
-                //if user types exit command
+
+                // Fault Tolerance of abnormal termination (Ctrl+C command) has been resolved here.
+                // If the Client has abnormally logged out of the chat service, for example pressing 'X' on the Command
+                // Line Interface. The Client input will be received as 'null' and our 'if' statement will execute.
+                // If the Client who abnormally terminated is the coordinator, we remove them from our ArrayList of active clients,
+                // we inform all the active members that the Client has left and to update their lists, we assign the new
+                // coordinator by retrieving the new Client at index 0 in our Client ArrayList, and finally we inform all
+                // active members who the new coordinator is.
+                // Otherwise if the Client abnormally terminated and is not the coordinator, we remove them from our active
+                // Client ArrayList, and inform all the active members that they have left and to update their list of
+                // active members.
                 if(outputString == null){
                     if (readID.equals(coord)){
                         IDArrayList.remove(readID);
@@ -62,6 +76,15 @@ public class ServerThreads extends Thread{
                     }
                 }
 
+                // Normal termination of the Client is executed here. If the Client inputs 'exit' into the Command Line
+                // Interface, we receive that message as them wanting to terminate their session.
+                // We check if the Client who wants to terminate is the coordinator, if so, we remove them from our ArrayList of active clients,
+                // we inform all the active members that the Client has left and to update their lists, we assign the new
+                // coordinator by retrieving the new Client at index 0 in our Client ArrayList, and finally we inform all
+                // active members who the new coordinator is.
+                // Otherwise if the Client abnormally terminated and is not the coordinator, we remove them from our active
+                // Client ArrayList, and inform all the active members that they have left and to update their list of
+                // active members.
                 else if (outputString.equals("exit") && readID.equals(coord)) {
                     IDArrayList.remove(readID);
                     printToALlClients(readID + " has left ");
@@ -78,14 +101,12 @@ public class ServerThreads extends Thread{
 
                 }
 
-                else {
-                    String message = ("(" + readID + ")" + " message : ");
-
-                }
-
+                // Otherwise we read any other input from the Client as a message to the other active Clients.
                 printToALlClients(outputString);
                 //output.println("Server says " + outputString);
                 System.out.println("Server received " + outputString);
+
+
 
             }
 
