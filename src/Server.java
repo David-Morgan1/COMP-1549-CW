@@ -111,7 +111,11 @@ public class Server {
                 System.out.println("Connection Established from " + IDArrayList);
 
 
-
+                //We initialised the ServerThreads within the Server class, for it to be extended
+                //as an inherited class. We included the clientSocket, threadList, IDArrayList and the
+                //readID which are all then instantiated within ServerThreads class for implementation
+                //in other functions. The threadList essentially will add all the client threads within
+                //the threadList. It then starts the ServerThreads.
                 ServerThreads threads = new ServerThreads(clientSocket, threadList, IDArrayList, readID);
                 threadList.add(threads);
                 threads.start();

@@ -21,12 +21,6 @@ public class Client {
             BufferedReader input = new BufferedReader(new InputStreamReader(in));
 
 
-            // system.in is used to read data from the keyboard
-            //System.out.println("Start the chat: ");
-            //String str = userInput.readLine();
-            //PrintWriter out  = new PrintWriter(clientSocket.getOutputStream(), true);
-            //out.println(str);
-
             // read the message the server has sent and display on the screen
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
@@ -52,9 +46,9 @@ public class Client {
             //loop closes when user enters exit command
 
             do {
-                // the client is expected to input its id
-                // it then gets sent to the server that reads it
-                // and stores it in the array list
+                // The client is expected to input its ID, Port and IP.
+                // It then gets sent to the server that reads it
+                // The user ID is then stored in the IDArrayList.
                 if (ID.equals("empty")) {
                     System.out.println("Enter your name ");
                     userInput = scanner.nextLine();
@@ -93,15 +87,16 @@ public class Client {
             } while (!userInput.equals("exit"));
 
 
-            //System.out.println("Connection Established from " + clientSocket);
+            //The initialisation of a Concurrent Hashmap is thread-safe. This means that it
+            //allows for multiple threads to operate on a single object without the complications.
+            //This is essential, as the activeClients (users connected) each have their own started
+            //thread which needs to be working at the same time for the communication to start.
 
             ConcurrentHashMap<String, Socket> activeClients = new ConcurrentHashMap<String, Socket>();
 
             activeClients.put(clientSocket.getInetAddress().getHostAddress(), clientSocket);
 
             for (String clientHost : activeClients.keySet()) {
-
-
 
 
             }

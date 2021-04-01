@@ -1,9 +1,11 @@
 import java.io.*;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.io.PrintWriter;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Date;
 
 
 public class ServerThreads extends Thread{
@@ -41,12 +43,23 @@ public class ServerThreads extends Thread{
             PrintWriter FirstCoordOut = new PrintWriter(new BufferedOutputStream(clientSocket.getOutputStream()), true);
             FirstCoordOut.println("The Coordinator is:" + firstcoord);
 
+            //if the client connects to the Server, then print to all connected users
+            //that the newly conencted user is online
+            if (clientSocket.isConnected()) {
+                printToALlClients(readID + " is online");
+            }
+
 
 
             while(true) {
                 // The variable 'outputString' allows continuous reading of input from the Client so that we can assess
                 // their input into the chat client.
                 String outputString = input.readLine();
+                //A timestamp created using SimpleDateFormat to record the messages that are
+                //sent between members of the Server.
+                String time_pattern = "yyyy-MM-dd HH:mm:ss";
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(time_pattern);
+                String date = simpleDateFormat.format(new Date());
 
                 // Fault Tolerance of abnormal termination (Ctrl+C command) has been resolved here.
                 // If the Client has abnormally logged out of the chat service, for example pressing 'X' on the Command
@@ -101,10 +114,18 @@ public class ServerThreads extends Thread{
 
                 }
 
-                // Otherwise we read any other input from the Client as a message to the other active Clients.
+                // We called the method `PrintToAllClients` into the while loop
+                //followed by the reading of any other input from the Client as a message to the other active Clients.
                 printToALlClients(outputString);
-                //output.println("Server says " + outputString);
+
+                //For group state maintenance, we had the messages receieved by the Server be
+                //printed onto the console.
                 System.out.println("Server received " + outputString);
+
+                //Calling the timestamp created within the PrintToAllClients method
+                //so that the messages are recorded and outputted with timestamp on
+                //the Server console.
+                System.out.println(outputString + "\n" + date);
 
 
 
@@ -119,10 +140,12 @@ public class ServerThreads extends Thread{
         }
 
     }
-
+    //We created a method named PrintToAllClients which acts as a broadcasting function, sending all
+    //outputs to the clients that are within the threadList. It therefore outputs the readID of the users,
+    //followed by a colon and the string outputString.
     private void printToALlClients(String outputString) {
         for (ServerThreads sT: threadList) {
-            sT.output.println(readID + " says : " + outputString);
+            sT.output.println(readID + " : " + outputString);
 
 
 
